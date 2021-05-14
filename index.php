@@ -1,20 +1,18 @@
-<?php
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Formulário de Inscrição</title>
+    <meta name="viewport" content="width=device-width",initial-scale="1">
+</head>
 
-$categorias = [];
-$categorias[] = 'infantil';
-$categorias[] = 'adolescente';
-$categorias[] = 'adulto';
-//print_r($categorias);
+<body>
+<p>FORMULÁRIO PARA INSCRIÇÃO DE COMPETIDORES</p>
 
-$nome = 'Eduardo';
-$idade = 8;
-//var_dump($nome);
-//var_dump($idade);
-
-if ($idade >=6 && $idade <= 12 ){
-    echo 'O aluno '.$nome.' compete na categoria infantil';
-}else if($idade >= 13 && $idade <=18){
-    echo 'adolescente';
-}else if($idade > 18){
-    echo 'adulto';
-}
+<form action="script.php" method="post">
+    <p>Seu nome: <input type="text" name="nome" /></p>
+    <p>Sua idade: <input type="text" name="idade" /></p>
+    <p><input type="submit" value="Enviar dados do competidor" /></p>
+</form>
+</body>
+</html>
