@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $categorias = [];
 $categorias = 'infantil';
 $categorias = 'adolescente';
@@ -12,27 +15,37 @@ $idade = $_POST['idade'];
 //var_dump($idade);
 
 if(empty($nome)){
-    echo 'O nome não pode ser vazio';
+    $_SESSION['mensagem-de-erro'] = 'O nome não pode ser vazio. Por favor, preencha novamente.';
+    header('location: index.php');
     return;
 }
-if(strlen($nome)<3){
-    echo 'O nome deve conter mais de 3 caracteres';
+else if(strlen($nome)<3){
+    $_SESSION['mensagem-de-erro'] = 'O nome deve conter mais de 3 caracteres.';
+    header('location: index.php');
     return;
 }
-if(strlen($nome)>40){
-    echo 'O nome é muito extenso';
+else if(strlen($nome)>40){
+    $_SESSION['mensagem-de-erro'] = 'O nome é muito extenso.';
+    header('location: index.php');
     return;
 }
-if(!is_numeric($idade)){
-    echo 'Informe um número para idade';
+else if(!is_numeric($idade)){
+    $_SESSION['mensagem-de-erro'] = 'Informe um número para idade.';
+    header('location: index.php');
     return;
 }
 
 
 if ($idade >= 6 && $idade <= 12){
-    echo "O nadador ".$nome." compete na categoria infantil";
+    $_SESSION['mensagem-de-sucesso'] = "O nadador ".$nome." compete na categoria infantil";
+    header('location: index.php');
+    return;
 }else if($idade > 12 && $idade <= 18){
-    echo "O nadador ".$nome." compete na categoria adolescente";
+    $_SESSION = "O nadador ".$nome." compete na categoria adolescente";
+    header('location: index.php');
+    return;
 }else if($idade > 18){
-    echo "O nadador ".$nome." compete na categoria adulto";
+    $_SESSION = "O nadador ".$nome." compete na categoria adulto";
+    header('location: index.php');
+    return;
 }
